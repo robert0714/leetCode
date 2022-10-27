@@ -12,70 +12,56 @@ import java.util.Set;
 
 class Solution {
 	public static void main(String[] args) {
-		Solution s = new Solution();
-		int[] head = new int[] {1,2, 3,4,5,6};
-		ListNode data = parser(head);
-		ListNode answer = s.middleNode(data);
 		
-		while(answer !=null) {
-			System.out.print(answer.val);
-			answer = answer.next;
-			if(answer != null)
-				System.out.print(",");
-		}
+		
+		Solution s =new Solution();
+		int[] nums ={-2,1,-3,4,-1,2,1,-5,4} ;
+		int max= s.maxSubArrayV2(nums);
+		System.out.println(max);
 		
 	}
-	public ListNode middleNode(ListNode head) {
-		ListNode count = head;
-		int total =0 ; 
-		while(count !=null) { 
-			count = count.next;
-			total++;
+	 public int maxSubArrayV2(int[] nums) {
+	        int max = nums[0];
+	        int result = max;  
+	        
+	        for (int i = 1; i < nums.length; ++i) {
+	            if (max>0){ //如果之前的和是正数，还可以往后加一加，观望一下
+	                max = max+nums[i];
+	            }else{ //如果之前的和是负数，还不如不加，从头开始
+	                max=nums[i];
+	            }
+	             
+	            result = Math.max(result, max);	             
+	        }
+	        return result;
+	    }
+	// O(n), Kadane's  Algorimth
+	public int maxSubArray(int[] nums) {
+		int sum = detect(nums);
+		if (sum < 0)
+			return sum;
+		int max = nums[0];
+		for (int i = 0; i < nums.length; ++i) {
+			sum += nums[i];
+			sum = Math.max(0, sum);//計算以該點數值為結束點的子數列的最大和（正數和）
+			max = Math.max(sum, max);//計算以該點數值為結束點的子數列的最大和（正數和）
 		}
-		int divideBy2 = total/2;
-		ListNode count2 = head;
-		
-		int cal =0 ;
-		while(count2 !=null) {
-			cal++;
-			count2 = count2.next;
-			if(cal==divideBy2) {
-				head = count2;
-				break;
-			}
-			
-		}
-		
-		return head;
+		return max;
 	}
-	public  static ListNode parser(int[] head) {
-		ListNode result =null ; 
-		for(int i = head.length-1 ; i>=0;i--) {
-			if(i==head.length-1) {
-				result = new ListNode(head[i]);
-			}else {
-				result = new ListNode(head[i],result);
-			}
-			
-		}
-		return result ; 
-	}
+	
+
+    // 測試是否全為負數，是的話回傳最大的負數，否則回傳0
+    private static int detect(int[] array)
+    {
+        int max = array[0];
+        for (int i = 0; i < array.length; ++i)
+        {
+            if (array[i] >= 0)
+                return 0;
+            max = Math.max(array[i], max);
+        }
+        return max;
+    }
 }
-
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode() {
-	}
-
-	ListNode(int val) {
-		this.val = val;
-	}
-
-	ListNode(int val, ListNode next) {
-		this.val = val;
-		this.next = next;
-	}
-}
+ 
  
