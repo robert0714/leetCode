@@ -20,9 +20,9 @@ class Solution {
 		int[][] prices = {{1,2},{3,4} };
 			int r=2,c=4;
 		int[][] profit = s.matrixReshape(prices,r,c);
-		show2dArray(prices);
+		System.out.println(Arrays.deepToString(prices));
 		 System.out.println("**********************************");
-		show2dArray(profit);
+		System.out.println(Arrays.deepToString(profit));
 	}
 
 	public int[][] matrixReshape(int[][] mat, int r, int c) {
@@ -70,22 +70,6 @@ class Solution {
         
         return result;
     }
-	public static  void show2dArray(int[][] mat) {
-		for(int i=0; i<mat.length; i++){
-			int[] col = mat[i] ; 
-			System.out.print("{");
-			for (int j = 0; j < col.length; j++) {
-				System.out.print(col[j] + " ");
-				if(j <(col.length-1) ) {
-					System.out.print(","); 
-				}
-			}			
-			if(i <(mat.length-1) ) {
-				System.out.print("},"); 
-			}else {
-				System.out.println("}"); 
-			}		    
-		}
-	}
+	
 	
 }

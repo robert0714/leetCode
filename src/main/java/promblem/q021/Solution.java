@@ -18,35 +18,10 @@ import java.util.Set;
 
 public class Solution {
 	public static void main(String[] args) {
-		Solution s = new Solution();
-		ListNode list1 = convert(new int[] { 1, 2, 4 });
-
-		ListNode list2 = convert(new int[] { 1, 3, 4 });
-
-		ListNode result = s.mergeTwoLists(list1, list2);
-		ListNode curr = new ListNode();
-		while (result != null) {
-			System.out.println(result.val);
-			result = result.next;
-
-		}
+		
 	}
 
-	public static ListNode convert(int[] params) {
-		ListNode curr = new ListNode();
-		ListNode next = new ListNode();
-		for (int i = params.length - 1; i > -1; i--) {
-			if (i == (params.length - 1)) {
-				next = null;
-			} else {
-				next = curr;
-			}
-
-			curr = new ListNode(params[i]);
-			curr.next = next;
-		}
-		return curr;
-	}
+	
 	public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 		ListNode dummy = new ListNode();		
         ListNode curr = new ListNode();
