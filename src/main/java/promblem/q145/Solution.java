@@ -1,4 +1,4 @@
-package promblem.q145;
+package promblem.q144;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,38 +16,32 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
 /**
- * https://ithelp.ithome.com.tw/articles/10271719
+ * https://ithelp.ithome.com.tw/articles/10272452
  * */
 public class Solution {
 	public static void main(String[] args) {
 		Solution s = new Solution();
 		TreeNode list1 = parser(new Integer[] { 1, null, 2, 3 }); 
 		  
-		List<Integer> result = s.inorderTraversal(list1);
+		List<Integer> result = s.postorderTraversal(list1);
 		System.out.println(result);
 	}
 
-	public List<Integer> inorderTraversal(TreeNode root) { 
-
-      return covertFromTreeNode(root);
+	public List<Integer> postorderTraversal(TreeNode root) {
+        final List<Integer> result = new ArrayList<Integer>();
+		postorder(root, result);
+        
+       return result;
     }
-    public List<Integer> covertFromTreeNode(TreeNode root){
-         final List<Integer> result = new ArrayList<Integer>();
-         if(root == null ){
-             return result ;
-         }
-         final TreeNode left = root.left;
-         if(left!=null){
-            result.addAll(covertFromTreeNode(left));
-         }         
-         result.add(root.val);
-         final TreeNode right = root.right;
-         if(right!=null){
-            result.addAll(covertFromTreeNode(right));
-         }
-
-         return result ; 
-    }
+    private void  postorder(TreeNode node , final List<Integer> result) { 
+		if (node == null) {
+			return  ;//  沒有節點往回走
+		}
+		
+		postorder(node.left, result);// 前往左邊子節點
+		postorder(node.right, result); // 前往右邊子節點
+        result.add(node.val); //   右邊子節點回來以後，將目前節點的值紀錄到list中
+	}
 
 	public static TreeNode parser(Integer[] arr) {
 		if (arr.length == 0) {
