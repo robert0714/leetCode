@@ -2,6 +2,7 @@ package common.utils;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.List;
 
 import common.model.TreeNode;
  
@@ -42,4 +43,27 @@ public class TreeNodeUtils {
     	
     	return root;
     } 
+	public static String show2dArray(List<List<Integer>> mat) {
+		final StringBuffer sbf = new StringBuffer();
+		sbf.append("[");
+		for (int i = 0; i < mat.size(); i++) {
+			List<Integer> col = mat.get(i);
+			sbf.append("[");
+			for (int j = 0; j < col.size(); j++) {
+				sbf.append(col.get(j));
+				if (j < (col.size() - 1)) {
+					sbf.append(",");
+				}
+			}
+			if (i < (mat.size() - 1)) {
+				sbf.append("],");
+			} else if (i < (mat.size())) {
+				sbf.append("]");
+			} else {
+				sbf.append("]");
+			}
+		}
+		sbf.append("]");
+		return sbf.toString();
+	}
 }
