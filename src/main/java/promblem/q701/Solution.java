@@ -13,16 +13,14 @@ import common.model.TreeNode;
 
 class Solution {
 	public TreeNode insertIntoBST(TreeNode root, int val) {
-		final TreeNode curent = new TreeNode(val);
-		if (val > root.val) {
-			// right
-		} else {
-			// left
-		}
-		return root;
-	}
-
-	public TreeNode find(TreeNode root, int val) {
-
-	}
+        if (root==null) {
+              return new TreeNode(val);
+        }
+        if(root.val > val ){
+            root.left = insertIntoBST(root.left, val);
+        }else{
+            root.right = insertIntoBST(root.right, val);
+        }
+        return root ; 
+    }
 }
