@@ -52,7 +52,7 @@ public class SolutionTest {
 			,{'.','.','.','.','.','.','.','.','.'}};
 		
 		
-		boolean result = s.isValidSudoku(board2);
+		boolean result = s.isValidSudoku(board0);
 
 		System.out.println("result: " + result);
 	}

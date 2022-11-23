@@ -28,15 +28,23 @@ class Solution {
 		}
 		return (checker.size() ==1 );
 	}
-	public boolean isValidSudoku(char[][] board) {
-		if(isValidSudokuSpecial(board)) {
-			return true;
-		}
-		char[][] revered = reverse(board);		
-		return  (isValidSudokuV1(board)&& isValidSudokuV1(revered)) ; 
-		
-//		return isValidSudokuV1(board);
-	}
+	public boolean isValidSudoku(final char[][] board) {
+		final HashSet<String> record = new HashSet<>();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != '.') {
+                	final String r = 'r' + "-" + i + "-" + board[i][j];
+                	final String c = 'c' + "-" + j + "-" + board[i][j];
+                	final String rc = (i / 3) + "-" + board[i][j] + "-" + (j / 3);
+					if (!record.add(r) || !record.add(c) || !record.add(rc))
+						return false;
+
+                }
+            }
+        }
+        return true;
+    }
+	
 	public boolean isValidSudokuV1(char[][] board) {
 		final char staticData = ".".charAt(0);
 		final Map<Integer, Set<Character>> record = new HashMap<Integer, Set<Character>>(9);		 
