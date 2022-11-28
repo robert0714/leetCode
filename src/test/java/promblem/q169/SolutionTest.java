@@ -28,4 +28,6 @@ public class SolutionTest {
 		assertEquals(2, result2);
 	}
 
+	 
+
 }

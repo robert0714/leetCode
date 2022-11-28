@@ -16,41 +16,33 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.DelayQueue;
 
-class Solution {
-	 
-	public int majorityElementV3(int[] nums) {
-		int result = 0;
-        //even occurence will nullify
-        for(int i=0;i<nums.length;i++){
-        	//magic bitwise inclusive OR and assignment operator.
-            result |= nums[i];
-        } 
-        return result;
-	}
+class Solution { 
 	public int majorityElementV2(int[] nums) {
-		final HashMap<Integer,Integer> map = new HashMap<>(nums.length);
-	    for (int i = 0; i < nums.length; i++) {
-	    	int count = map.getOrDefault(nums[i], 0);
-	    	map.put(nums[i],count + 1);
-	    }
-	    final HashMap<Integer,Integer> map2 = new HashMap<>(nums.length);
-	    for ( Map.Entry<Integer,Integer> entry : map.entrySet()) {
-	        Integer key = entry.getKey();
-	        Integer value = entry.getValue();
-	        if (value.intValue() > 1) {
-	            map2.put(value,key);
-	        }
-	    }
-	    List<Integer> keys = new ArrayList<>(map2.keySet());
+		final HashMap<Integer, Integer> map = new HashMap<>(nums.length);
+		for (int i = 0; i < nums.length; i++) {
+			int count = map.getOrDefault(nums[i], 0);
+			map.put(nums[i], count + 1);
+		}
+		final HashMap<Integer, Integer> map2 = new HashMap<>(nums.length);
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			Integer key = entry.getKey();
+			Integer value = entry.getValue();
+			if (value.intValue() > 1) {
+				map2.put(value, key);
+			}
+		}
+		List<Integer> keys = new ArrayList<>(map2.keySet());
 		keys.sort((a, b) -> {
 			return b.intValue() - a.intValue();
 		});
-		int key = keys.get(0);
-	    return map2.get(key);
+		if (keys.size() > 0) {
+			return map2.get(keys.get(0));
+		} else {
+			return 1;
+		}
 	}
-	
-	 
-	public int majorityElement(int[] nums1) { 
+
+	public int majorityElement(int[] nums1) {
 		return majorityElementV2(nums1);
 	}
 }
