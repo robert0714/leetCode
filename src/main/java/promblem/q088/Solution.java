@@ -1,4 +1,4 @@
-package promblem.q88;
+package promblem.q088;
 
 import java.util.ArrayList;
 import java.util.Collections;

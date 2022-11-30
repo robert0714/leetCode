@@ -35,7 +35,7 @@ public class SolutionTest {
 		
 		int[][] intervals4 = { { 1, 100 }, { 11, 22 }, { 1, 11 }, { 2, 12 } };
 		int result4 = s.eraseOverlapIntervals(intervals4);
-		assertEquals(0, result4);
+		assertEquals(2, result4);
 	}
 
 }
