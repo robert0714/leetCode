@@ -28,18 +28,26 @@ public class SolutionTest {
 //		int[] nums02 = { 5, 4, 3, 2, 1 };
 //		boolean result02 = s.increasingTriplet(nums02);
 //		assertFalse(result02);
-
-		int[] nums03 = { 2, 1, 5, 0, 4, 6 };
-		boolean result03 = s.increasingTriplet(nums03);
-		assertTrue(result03);
-
+//
+//		int[] nums03 = { 2, 1, 5, 0, 4, 6 };
+//		boolean result03 = s.increasingTriplet(nums03);
+//		assertTrue(result03);
+//
 //		int[] nums04 = { 20, 100, 10, 12, 5, 13 };
 //		boolean result04 = s.increasingTriplet(nums04);
 //		assertTrue(result04);
-//		
-//		int[] nums05 = { 6,7,1,2 };
+//
+//		int[] nums05 = { 6, 7, 1, 2 };
 //		boolean result05 = s.increasingTriplet(nums05);
 //		assertFalse(result05);
+
+		int[] nums06 = { 1, 5, 0, 4, 1, 3 };
+		boolean result06 = s.increasingTriplet(nums06);
+		assertTrue(result06);
+		
+		int[] nums07 = {1,6,2,5,1};
+		boolean result07 = s.increasingTriplet(nums07);
+		assertTrue(result07);
 	}
 
 }

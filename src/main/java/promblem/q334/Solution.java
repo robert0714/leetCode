@@ -19,31 +19,40 @@ class Solution {
 		if (nums.length < 3)
 			return false;
 		int ref = nums[0];
-		int count = 0;
-		List<Integer> list = new ArrayList<>();
-//		Map<Integer , List<Integer> > record = new HashMap<>();
+		List<Integer> list = new ArrayList<>(5);
 		list.add(ref);
-//		record.getOrDefault(ref, list);
+ 
 		for (int i = 1; i < nums.length; ++i) {
-			int another = nums[i];
+			final int another = nums[i];
 			if (Math.max(another, ref) > ref) {
-				 count++;
-//				List<Integer> sublist = record.getOrDefault(ref, new ArrayList<>());
-//				sublist.add(another);
-//				record.put(null, sublist);
-				 list.add(another);
+				list.add(another);
+				for (int k = i + 1; k < nums.length; k++) {
+					int thirdNum = nums[k];
+					if (thirdNum > another) {
+						list.add(thirdNum);
+						return true ;
+					}
+				}
+				list.remove(1);
+
 			} else {
-				if(count >0) {
-					list = new ArrayList<>();
-				}				
+				int count =0 ; 
+				for(int qulified = i ; qulified <nums.length; ++qulified) {
+					final int qulifiedValue = nums[qulified];
+					if (another < qulifiedValue) {
+						count++;
+					}
+				}
+				if (another < list.get(0) && count > 0) {
+					list = new ArrayList<>(5);
+					list.add(another);
+				}
 				
+
 			}
 			ref = another;
-			if (list.size() == 3) {
-				return true;
-			}
-			;
 		}
+
 		return false;
 	}
 }
