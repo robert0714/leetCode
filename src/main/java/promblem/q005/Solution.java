@@ -11,55 +11,57 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.xml.stream.events.Characters;
+
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
 import java.util.Stack;
 
+/**
+ * Longest Palindromic Substring 
+ * https://leetcode.com/problems/longest-palindromic-substring/submissions/856156527/?envType=study-plan&id=data-structure-ii
+ * https://www.youtube.com/watch?v=QfZvw8_jz1w
+ */
 public class Solution {
 	public String longestPalindrome(String s) {
-		if (s.length() == 1) {
+
+		int length = s.length();
+		if (length == 1) {
 			return s;
 		}
-		char[] characters = s.toCharArray();
-		int[] lastIndex = new int[26];
-		int[] topIndex = new int[26];
-		for (int i = 0; i < s.length(); ++i) {
-			lastIndex[characters[i] - 'a'] = i;
-		}
-		for (int i = s.length() - 1; i >= 0; --i) {
-			topIndex[characters[i] - 'a'] = i;
-		}
+		int end = 0;
+		int start = 0;
+		for (int i = 0; i < length; ++i) {
+			int oddLength = expand(s, i, i);
+			int evenLength = expand(s, i, i + 1);
+			int maxlength = Math.max(oddLength, evenLength);
 
-//		int i = 0;
-//		while (i < s.length()) {
-//			int j = i + 1;
-//			int alphabet1 = characters[i] - 'a';
-//			while()
-//			int alphabet2 = characters[j] - 'a';
-//		}
-
-		Set<String> record = new HashSet<>();
-		for (int i = 0; i < s.length(); ++i) {
-			int top = topIndex[characters[i] - 'a'];
-			int end = lastIndex[characters[i] - 'a'];
-			if (top != end) {
-				String tmp = s.substring(top, end + 1);
-				String reverse   =reverse(tmp) ;
-				if(tmp.equals(reverse)) {
-					return tmp;
-				}else {
-					int index = reverse.compareTo(tmp);
-					System.out.println(index);
-				}
-				
+			// to compare which point's length is maximum
+			if (maxlength > end - start + 1) {
+				// If length is even .(6),distance is 2 , start-->i-2 ,end -> i+3
+				// If length is odd .(5), distance is 2 , start-->i-2 ,end -> i+2
+				start = i - (maxlength - 1) / 2;
+				end = i + maxlength / 2;
 			}
 		}
-		if (record.size() == 0) {
-			return s.substring(0, 1);
+
+		return s.substring(start, end + 1);
+	}
+
+	private int expand(final String s, int left, int right) {
+		int result = 0;
+//		char[] characters = s.toCharArray();
+		
+		while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+			result = right - left + 1;
+			left--;
+			right++;
+
 		}
-		return "";
+		return result;
 	}
 
 	public String reverse(String s) {
