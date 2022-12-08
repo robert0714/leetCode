@@ -20,11 +20,12 @@ public class SolutionTest {
 	public void testLongestPalindrome() {
 		Solution s= new Solution();
 		
-//		assertEquals("bab", s.longestPalindrome("babad"));
-//		assertEquals("bb", s.longestPalindrome("cbbd"));
-//		assertEquals("a", s.longestPalindrome("a"));
-//		assertEquals("ac", s.longestPalindrome("a"));
+		assertEquals("bab", s.longestPalindrome("babad"));
+		assertEquals("bb", s.longestPalindrome("cbbd"));
+		assertEquals("a", s.longestPalindrome("a"));
+		assertEquals("a", s.longestPalindrome("ac"));
 		assertEquals("aca", s.longestPalindrome("aacabdkacaa"));
+		assertEquals("ccc", s.longestPalindrome("ccc"));
 	}
 
 }
