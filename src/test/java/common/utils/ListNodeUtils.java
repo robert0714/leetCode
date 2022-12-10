@@ -4,8 +4,10 @@ import common.model.ListNode;
 
 public class ListNodeUtils {
 	public static ListNode convert(int[] params) {
-		ListNode curr = new ListNode();
-		ListNode next = new ListNode();
+//		ListNode curr = new ListNode();
+//		ListNode next = new ListNode();
+		ListNode curr = null;
+		ListNode next = null;
 		for (int i = params.length - 1; i > -1; i--) {
 			if (i == (params.length - 1)) {
 				next = null;
