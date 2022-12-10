@@ -1,25 +1,9 @@
 package promblem.q021;
+ 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Random;
-import java.util.Set;
+import common.model.ListNode;
 
-public class Solution {
-	public static void main(String[] args) {
-		
-	}
+public class Solution { 
 
 	
 	public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
@@ -57,21 +41,5 @@ public class Solution {
         }
         return dummy.next.next;
 	}
-
-	static class ListNode {
-		int val;
-		ListNode next;
-
-		ListNode() {
-		}
-
-		ListNode(int val) {
-			this.val = val;
-		}
-
-		ListNode(int val, ListNode next) {
-			this.val = val;
-			this.next = next;
-		}
-	}
 }
+	
