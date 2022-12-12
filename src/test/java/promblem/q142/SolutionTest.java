@@ -11,12 +11,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import common.model.ListNode;
+import common.utils.ListNodeUtils;
 
 /***
  *  
  **/
 public class SolutionTest {
-	Solution solution = new Solution();
+	
 
 	@BeforeEach
 	protected void setUp() throws Exception {
@@ -29,17 +30,18 @@ public class SolutionTest {
 
 	@Test
 	public void testAddTwoNumbers() {
+		Solution solution = new Solution();
 
-		ListNode node1 = ListNode.build(Arrays.asList(3, 2, 0, -4));
+		ListNode node1 = ListNodeUtils.build(Arrays.asList(3, 2, 0, -4));
 		// head = [3,2,0,-4], pos = 1
 		node1.next.next.next.next = node1.next;
 
-		ListNode node2 = ListNode.build(Arrays.asList(1, 2));
+		ListNode node2 = ListNodeUtils.build(Arrays.asList(1, 2));
 		// head = [1,2], pos = 0
 		node2.next.next = node2;
 
 		// head = [1], pos = -1
-		ListNode node3 = ListNode.build(Collections.singletonList(1));
+		ListNode node3 = ListNodeUtils.build(Collections.singletonList(1));
 
 		ListNode result01 = solution.detectCycle(node1);
 		assertEquals(node1.next, result01);
@@ -57,6 +59,8 @@ public class SolutionTest {
 	 * */
 	@Test
 	public void Test1() {
+		Solution solution = new Solution();
+		
 		ListNode n1 = new ListNode(3);
 		ListNode n2 = new ListNode(4);
 		ListNode n3 = new ListNode(0);
@@ -74,6 +78,8 @@ public class SolutionTest {
 	 * */
 	@Test
 	public void Test2() {
+		Solution solution = new Solution();
+		
 		ListNode n1 = new ListNode(3);
 		ListNode head = n1;
 		ListNode actual = solution.detectCycle(head);
@@ -85,6 +91,8 @@ public class SolutionTest {
 	 * */
 	@Test
 	public void Test3() {
+		Solution solution = new Solution();
+		
 		ListNode n1 = new ListNode(3);
 		n1.next = n1;//pos = 0
 		ListNode head = n1;
@@ -96,6 +104,8 @@ public class SolutionTest {
 	 * */
 	@Test
 	public void Test4() {
+		Solution solution = new Solution();
+		
 		ListNode n1 = new ListNode(1);
 		ListNode n2 = new ListNode(2);
 		ListNode n3 = new ListNode(3);
@@ -111,6 +121,8 @@ public class SolutionTest {
 	 * */
 	@Test
 	public void Test5() {
+		Solution solution = new Solution();
+		
 		ListNode n1 = new ListNode(1);
 		ListNode n2 = new ListNode(2);
 		ListNode n3 = new ListNode(3);
