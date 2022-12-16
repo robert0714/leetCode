@@ -51,7 +51,7 @@ public class ListNodeUtils {
 	 * @param nums
 	 * @return head node of the constructed list
 	 */
-	public static ListNode constructLinkedList(List<Integer> nums) {
+	public static ListNode constructLinkedList(final Integer... nums) {
 		ListNode dummy = new ListNode(-1);
 		ListNode node = dummy;
 		for (Integer number : nums) {
