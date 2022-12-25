@@ -23,4 +23,17 @@ public class TreeNode {
 		this.left = left;
 		this.right = right;
 	}
+	/**
+     * If root node is not null, then connect root with its left and right child.
+     * 
+     * @param root root node (should not be null)
+     * @param left
+     * @param right
+     */
+    public static void connect(final TreeNode root, final TreeNode left, final TreeNode right) {
+        if (root != null) {
+            root.left = left;
+            root.right = right;
+        }
+    }
 }
