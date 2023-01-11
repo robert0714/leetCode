@@ -24,7 +24,7 @@ import common.model.TreeNode;
 /***
  * path sum
  * 
- * https://leetcode.com/problems/path-sum/discussion/?envType=study-plan&id=data-structure-i
+ * https://leetcode.com/problems/path-sum/description/?envType=study-plan&id=data-structure-i
  * */
 public class Solution {
 
